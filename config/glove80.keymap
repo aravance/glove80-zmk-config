@@ -20,7 +20,7 @@
 #define MAGIC 3
 
 #define TD_HOLD(name,mk,sk)                 \
-name: tap_dance_##name                      \
+name: tap_dance_##name {                    \
     compatible = "zmk,behavior-tap-dance";  \
     label = #name;                          \
     #binding-cells = <0>;                   \
