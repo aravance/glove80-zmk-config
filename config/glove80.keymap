@@ -36,7 +36,7 @@
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp LSHFT>, <&kp LS(LALT)>;
-        }
+        };
 
         td_lctrl: tap_dance_lctrl {
             compatible = "zmk,behavior-tap-dance";
@@ -52,7 +52,7 @@
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp RSHFT>, <&kp RS(LALT)>;
-        }
+        };
 
         td_rctrl: tap_dance_rctrl {
             compatible = "zmk,behavior-tap-dance";
