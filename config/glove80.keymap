@@ -19,6 +19,17 @@
 #define NUMPAD 2
 #define MAGIC 3
 
+#define TD_HOLD(name,mk,sk)                 \
+name: tap_dance_##name                      \
+    compatible = "zmk,behavior-tap-dance";  \
+    label = #name;                          \
+    #binding-cells = <0>;                   \
+    tapping-term-ms = <200>;                \
+    bindings = <&kp mk>, <&mt sk sk>;       \
+};
+
+#define TD_LALT(name,mk) TD_HOLD(name,mk,LA(mk))
+
 / {
     behaviors {
         magic: magic_hold_tap {
@@ -30,53 +41,12 @@
             bindings = <&mo>, <&rgb_ug_status_macro>;
         };
 
-        td_lshft: tap_dance_lshft {
-            compatible = "zmk,behavior-tap-dance";
-            label = "LSHFT_TAP_DANCE";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp LSHFT>, <&kp LS(LALT)>;
-        };
-
-        td_lctrl: tap_dance_lctrl {
-            compatible = "zmk,behavior-tap-dance";
-            label = "LCTRL_TAP_DANCE";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp LCTRL>, <&kp LC(LALT)>;
-        };
-
-        td_rshft: tap_dance_rshft {
-            compatible = "zmk,behavior-tap-dance";
-            label = "RSHFT_TAP_DANCE";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp RSHFT>, <&kp RS(LALT)>;
-        };
-
-        td_rctrl: tap_dance_rctrl {
-            compatible = "zmk,behavior-tap-dance";
-            label = "RCTRL_TAP_DANCE";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp RCTRL>, <&kp RC(LALT)>;
-        };
-
-        td_lcmd: tap_dance_lcmd {
-            compatible = "zmk,behavior-tap-dance";
-            label = "LCMD_TAP_DANCE";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp LCMD>, <&kp LALT>;
-        };
-
-        td_lalt: tap_dance_lalt {
-            compatible = "zmk,behavior-tap-dance";
-            label = "LALT_TAP_DANCE";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp LALT>, <&kp LCMD>;
-        };
+        TD_HOLD(td_lalt, LALT, LCMD)
+        TD_HOLD(td_lcmd, LCMD, LALT)
+        TD_LALT(td_lctrl, LCTRL)
+        TD_LALT(td_lshft, LSHFT)
+        TD_LALT(td_rctrl, RCTRL)
+        TD_LALT(td_rshft, RSHFT)
     };
 
     macros {
