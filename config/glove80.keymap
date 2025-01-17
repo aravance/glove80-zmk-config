@@ -26,7 +26,7 @@ name: tap_dance_##name {                    \
     #binding-cells = <0>;                   \
     tapping-term-ms = <300>;                \
     bindings = <&kp mk>, <&mt sk sk>;       \
-};
+}
 
 #define TD_LALT(name,mk) TD_HOLD(name,mk,LA(mk))
 
@@ -41,12 +41,12 @@ name: tap_dance_##name {                    \
             bindings = <&mo>, <&rgb_ug_status_macro>;
         };
 
-        TD_HOLD(td_lalt, LALT, LCMD)
-        TD_HOLD(td_lcmd, LCMD, LALT)
-        TD_LALT(td_lctrl, LCTRL)
-        TD_LALT(td_lshft, LSHFT)
-        TD_LALT(td_rctrl, RCTRL)
-        TD_LALT(td_rshft, RSHFT)
+        TD_HOLD(td_lalt, LALT, LCMD);
+        TD_HOLD(td_lcmd, LCMD, LALT);
+        TD_LALT(td_lctrl, LCTRL);
+        TD_LALT(td_lshft, LSHFT);
+        TD_LALT(td_rctrl, RCTRL);
+        TD_LALT(td_rshft, RSHFT);
     };
 
     macros {
